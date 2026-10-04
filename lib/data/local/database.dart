@@ -371,7 +371,7 @@ class LocalDatabase {
     return maps.map((m) => Channel(
           id: m["id"] as String,
           server: m['server_id'] as String?,
-          name: m["name"] as String?,
+          name: m["name"] as String,
           channelType: m['channel_type'] as String,
           lastMessageId: m['last_message_id'] as String?,
           unreadCount: (m["unread_count"] as int?) ?? 0,
@@ -420,8 +420,8 @@ class LocalDatabase {
     final maps = await db.query('servers');
     return maps.map((m) => Server(
           id: m["id"] as String,
-          owner: m["owner_id"] as String?,
-          name: m["name"] as String?,
+          owner: m["owner_id"] as String,
+          name: m["name"] as String,
           icon: m["icon_id"] as String?,
           banner: m["banner_id"] as String?,
           description: m["description"] as String?,

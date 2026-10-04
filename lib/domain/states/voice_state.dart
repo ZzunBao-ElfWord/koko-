@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:livekit_client/livekit_client.dart';
-import '../services/voice_service.dart';
+
+/// Network quality levels for voice connections
+enum NetworkQuality { unknown, excellent, good, poor, veryPoor }
 
 /// State for a single voice participant
 class VoiceParticipant {
@@ -9,10 +10,7 @@ class VoiceParticipant {
   final String? avatarUrl;
   final bool isSpeaking;
   final bool isMuted;
-  final bool isDeafened;
-  final bool isCameraEnabled;
-  final bool isScreenShareEnabled;
-  final double audioLevel; // 0.0 - 1.0
+  final double audioLevel;
 
   VoiceParticipant({
     required this.identity,
@@ -20,9 +18,6 @@ class VoiceParticipant {
     this.avatarUrl,
     this.isSpeaking = false,
     this.isMuted = false,
-    this.isDeafened = false,
-    this.isCameraEnabled = false,
-    this.isScreenShareEnabled = false,
     this.audioLevel = 0.0,
   });
 
@@ -32,9 +27,6 @@ class VoiceParticipant {
     String? avatarUrl,
     bool? isSpeaking,
     bool? isMuted,
-    bool? isDeafened,
-    bool? isCameraEnabled,
-    bool? isScreenShareEnabled,
     double? audioLevel,
   }) {
     return VoiceParticipant(
@@ -43,38 +35,35 @@ class VoiceParticipant {
       avatarUrl: avatarUrl ?? this.avatarUrl,
       isSpeaking: isSpeaking ?? this.isSpeaking,
       isMuted: isMuted ?? this.isMuted,
-      isDeafened: isDeafened ?? this.isDeafened,
-      isCameraEnabled: isCameraEnabled ?? this.isCameraEnabled,
-      isScreenShareEnabled: isScreenShareEnabled ?? this.isScreenShareEnabled,
       audioLevel: audioLevel ?? this.audioLevel,
     );
   }
 }
 
-/// Global voice room state
+/// State for the voice room
 class VoiceRoomState {
   final bool isConnected;
   final bool isConnecting;
   final String? roomId;
   final String? channelName;
-  final String? error;
   final bool isLocalMuted;
   final bool isLocalDeafened;
   final List<VoiceParticipant> participants;
   final Map<String, double> audioLevels;
   final NetworkQuality networkQuality;
+  final String? error;
 
   VoiceRoomState({
     this.isConnected = false,
     this.isConnecting = false,
     this.roomId,
     this.channelName,
-    this.error,
     this.isLocalMuted = false,
     this.isLocalDeafened = false,
     this.participants = const [],
     this.audioLevels = const {},
     this.networkQuality = NetworkQuality.unknown,
+    this.error,
   });
 
   VoiceRoomState copyWith({
@@ -82,28 +71,26 @@ class VoiceRoomState {
     bool? isConnecting,
     String? roomId,
     String? channelName,
-    String? error,
     bool? isLocalMuted,
     bool? isLocalDeafened,
     List<VoiceParticipant>? participants,
     Map<String, double>? audioLevels,
     NetworkQuality? networkQuality,
+    String? error,
   }) {
     return VoiceRoomState(
       isConnected: isConnected ?? this.isConnected,
       isConnecting: isConnecting ?? this.isConnecting,
       roomId: roomId ?? this.roomId,
       channelName: channelName ?? this.channelName,
-      error: error,
       isLocalMuted: isLocalMuted ?? this.isLocalMuted,
       isLocalDeafened: isLocalDeafened ?? this.isLocalDeafened,
       participants: participants ?? this.participants,
       audioLevels: audioLevels ?? this.audioLevels,
       networkQuality: networkQuality ?? this.networkQuality,
+      error: error ?? this.error,
     );
   }
-
-  int get participantCount => participants.length + (isConnected ? 1 : 0);
 }
 
 class VoiceRoomNotifier extends StateNotifier<VoiceRoomState> {
@@ -131,6 +118,18 @@ class VoiceRoomNotifier extends StateNotifier<VoiceRoomState> {
 
   void setDisconnected() {
     state = VoiceRoomState();
+  }
+
+  void disconnect() {
+    state = VoiceRoomState();
+  }
+
+  void toggleMute() {
+    state = state.copyWith(isLocalMuted: !state.isLocalMuted);
+  }
+
+  void toggleDeafen() {
+    state = state.copyWith(isLocalDeafened: !state.isLocalDeafened);
   }
 
   void setLocalMuted(bool muted) {
@@ -163,8 +162,6 @@ class VoiceRoomNotifier extends StateNotifier<VoiceRoomState> {
 
   void updateAudioLevels(Map<String, double> levels) {
     state = state.copyWith(audioLevels: levels);
-
-    // Also update participant audioLevel fields
     final updatedParticipants = state.participants.map((p) {
       final level = levels[p.identity] ?? 0.0;
       return p.copyWith(audioLevel: level, isSpeaking: level > 0.1);
