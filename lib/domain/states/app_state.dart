@@ -39,4 +39,6 @@ final isLoadingProvider = StateProvider<bool>((ref) => false);
 final isSendingProvider = StateProvider<bool>((ref) => false);
 
 // Locale / language
-final appLocaleProvider = StateProvider<Locale?>((ref) => null); // null = follow system
+// Defaults to Chinese (regardless of system language); the user's explicit
+// choice from Settings is persisted via LocaleSettings and restored at startup.
+final appLocaleProvider = StateProvider<Locale>((ref) => const Locale('zh'));

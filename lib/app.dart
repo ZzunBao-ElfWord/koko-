@@ -119,15 +119,6 @@ class _StoatAppState extends ConsumerState<StoatApp> {
         Locale('zh'),
         Locale('en'),
       ],
-      localeResolutionCallback: (deviceLocale, supportedLocales) {
-        if (locale != null) return locale; // User override
-        for (final supported in supportedLocales) {
-          if (supported.languageCode == deviceLocale?.languageCode) {
-            return supported;
-          }
-        }
-        return const Locale('en');
-      },
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
+import '../../core/locale_settings.dart';
 import '../../core/theme.dart';
 import '../../domain/states/app_state.dart';
 import '../../domain/services/push_notification_service.dart';
@@ -112,28 +113,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               const SizedBox(height: 16),
               ListTile(
                 leading: const Icon(Icons.language),
-                title: Text(AppLocalizations.of(context)!.languageSystem),
-                trailing: currentLocale == null ? const Icon(Icons.check, color: AppTheme.primaryColor) : null,
-                onTap: () {
-                  ref.read(appLocaleProvider.notifier).state = null;
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.language),
                 title: Text(AppLocalizations.of(context)!.languageZh),
-                trailing: currentLocale?.languageCode == 'zh' ? const Icon(Icons.check, color: AppTheme.primaryColor) : null,
+                trailing: currentLocale.languageCode == 'zh' ? const Icon(Icons.check, color: AppTheme.primaryColor) : null,
                 onTap: () {
                   ref.read(appLocaleProvider.notifier).state = const Locale('zh');
+                  LocaleSettings.save(const Locale('zh'));
                   Navigator.pop(context);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.language),
                 title: Text(AppLocalizations.of(context)!.languageEn),
-                trailing: currentLocale?.languageCode == 'en' ? const Icon(Icons.check, color: AppTheme.primaryColor) : null,
+                trailing: currentLocale.languageCode == 'en' ? const Icon(Icons.check, color: AppTheme.primaryColor) : null,
                 onTap: () {
                   ref.read(appLocaleProvider.notifier).state = const Locale('en');
+                  LocaleSettings.save(const Locale('en'));
                   Navigator.pop(context);
                 },
               ),
@@ -146,7 +140,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   String _getLanguageLabel() {
     final locale = ref.watch(appLocaleProvider);
-    if (locale == null) return AppLocalizations.of(context)!.languageSystem;
     if (locale.languageCode == 'zh') return AppLocalizations.of(context)!.languageZh;
     return AppLocalizations.of(context)!.languageEn;
   }

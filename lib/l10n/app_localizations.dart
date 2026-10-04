@@ -601,65 +601,65 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh() : super('zh');
 
   @override
-  String get about => 'About';
+  String get about => '关于';
   @override
-  String get accept => 'Accept';
+  String get accept => '接受';
   @override
   String get account => '账号';
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => '添加好友';
   @override
-  String get addReaction => 'Add Reaction';
+  String get addReaction => '添加反应';
   @override
   String get addReactionFailed => '添加反应失败';
   @override
   String get appName => 'Stoat';
   @override
-  String get attachment => 'Attachment';
+  String get attachment => '附件';
   @override
   String get attachmentCount => '个附件';
   @override
   String get attachmentPlaceholder => '[附件]';
   @override
-  String get backOnline => 'Back online';
+  String get backOnline => '已恢复连接';
   @override
-  String get busy => 'Do Not Disturb';
+  String get busy => '免打扰';
   @override
-  String get cancel => 'Cancel';
+  String get cancel => '取消';
   @override
   String get cancelRequest => '取消';
   @override
   String get cannotReadFile => '无法读取文件';
   @override
-  String get changelog => 'Changelog';
+  String get changelog => '更新日志';
   @override
-  String get channels => 'Channels';
+  String get channels => '频道';
   @override
-  String get confirm => 'Confirm';
+  String get confirm => '确认';
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get confirmPassword => '确认密码';
   @override
   String get connecting => '连接中...';
   @override
-  String get copied => 'Copied';
+  String get copied => '已复制';
   @override
   String get copiedToClipboard => '已复制到剪贴板';
   @override
-  String get copy => 'Copy';
+  String get copy => '复制';
   @override
   String get createAccount => '创建账号';
   @override
   String get deafen => '耳机静音';
   @override
-  String get delete => 'Delete';
+  String get delete => '删除';
   @override
   String get deleteFailed => '删除失败';
   @override
-  String get deleteMessageConfirm => 'This action cannot be undone. Delete this message?';
+  String get deleteMessageConfirm => '此操作无法撤销，确定删除这条消息吗？';
   @override
   String get deleteMessageTitle => '删除消息';
   @override
-  String get directMessages => 'Direct Messages';
+  String get directMessages => '私信';
   @override
   String get directMessagesTitle => '私信';
   @override
@@ -667,25 +667,25 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get displayNameLabel => '显示名称';
   @override
-  String get download => 'Download';
+  String get download => '下载';
   @override
-  String get downloaded => 'Downloaded';
+  String get downloaded => '已下载';
   @override
-  String get edit => 'Edit';
+  String get edit => '编辑';
   @override
   String get editFailed => '编辑失败';
   @override
   String get editMessageHint => '编辑消息...';
   @override
-  String get editProfile => 'Edit Profile';
+  String get editProfile => '编辑资料';
   @override
-  String get edited => 'edited';
+  String get edited => '已编辑';
   @override
   String get editing => '编辑中';
   @override
-  String get email => 'Email';
+  String get email => '邮箱';
   @override
-  String get enableNotifications => 'Enable Push Notifications';
+  String get enableNotifications => '开启推送通知';
   @override
   String get enterConfirmPassword => '请确认密码';
   @override
@@ -693,35 +693,35 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get enterPassword => '请输入密码';
   @override
-  String get error => 'Error';
+  String get error => '错误';
   @override
   String get failedToLoadImage => '加载图片失败';
   @override
   String get failedToLoadVideo => '无法加载视频';
   @override
-  String get failedToSend => 'Failed to send';
+  String get failedToSend => '发送失败';
   @override
-  String get file => 'File';
+  String get file => '文件';
   @override
   String get filePicker => '文件';
   @override
   String get filePickerSubtitle => '文档、视频、压缩包等';
   @override
-  String get forgotPassword => 'Forgot Password?';
+  String get forgotPassword => '忘记密码？';
   @override
   String get friendRemoved => '已删除好友';
   @override
   String get friendRequestSent => '好友请求已发送';
   @override
-  String get friendRequests => 'Friend Requests';
+  String get friendRequests => '好友请求';
   @override
-  String get friends => 'Friends';
+  String get friends => '好友';
   @override
-  String get hasAccount => 'Already have an account?';
+  String get hasAccount => '已有账号？';
   @override
-  String get idle => 'Idle';
+  String get idle => '离开';
   @override
-  String get image => 'Image';
+  String get image => '图片';
   @override
   String get imagePicker => '图片';
   @override
@@ -729,17 +729,17 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get incoming => '收到';
   @override
-  String get invisible => 'Invisible';
+  String get invisible => '隐身';
   @override
   String get joiningVoice => '正在加入语音频道...';
   @override
-  String get language => 'Language';
+  String get language => '语言';
   @override
-  String get languageEn => 'English';
+  String get languageEn => '英文';
   @override
-  String get languageSystem => 'System Default';
+  String get languageSystem => '跟随系统';
   @override
-  String get languageZh => 'Chinese';
+  String get languageZh => '中文';
   @override
   String get leave => '离开';
   @override
@@ -747,15 +747,15 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get loadMessagesFailed => '加载消息失败';
   @override
-  String get loading => 'Loading...';
+  String get loading => '加载中...';
   @override
-  String get login => 'Login';
+  String get login => '登录';
   @override
   String get loginFailed => '登录失败';
   @override
-  String get logout => 'Logout';
+  String get logout => '退出登录';
   @override
-  String get logoutConfirm => 'Are you sure you want to logout?';
+  String get logoutConfirm => '确定要退出登录吗？';
   @override
   String get logoutContent => '退出后将清除本地会话数据。';
   @override
@@ -763,7 +763,7 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get me => '我';
   @override
-  String get messageHint => 'Message';
+  String get messageHint => '消息';
   @override
   String get messageHintWithChannel => '消息 #';
   @override
@@ -775,21 +775,21 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get messageMenuReply => '回复';
   @override
-  String get microphonePermission => 'Microphone Permission';
+  String get microphonePermission => '麦克风权限';
   @override
-  String get microphonePermissionDesc => 'Required for voice channel calls';
+  String get microphonePermissionDesc => '语音频道通话需要麦克风权限';
   @override
   String get mute => '静音';
   @override
-  String get mutualServers => 'Mutual Servers';
+  String get mutualServers => '共同服务器';
   @override
-  String get networkError => 'Network error. Please check your connection.';
+  String get networkError => '网络错误，请检查网络连接。';
   @override
   String get networkQualityPoor => '网络质量较差，通话可能受影响';
   @override
-  String get noAccount => 'Don\'t have an account?';
+  String get noAccount => '还没有账号？';
   @override
-  String get noContent => 'No content';
+  String get noContent => '无内容';
   @override
   String get noDirectMessages => '暂无私信';
   @override
@@ -799,29 +799,29 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get noMatchingMessages => '未找到匹配消息';
   @override
-  String get noMessages => 'No messages yet';
+  String get noMessages => '暂无消息';
   @override
   String get noOtherParticipants => '暂无其他参与者';
   @override
   String get noOutgoingRequests => '没有已发送的好友请求';
   @override
-  String get noResults => 'No results found';
+  String get noResults => '未找到结果';
   @override
   String get notConnected => '未连接';
   @override
   String get notificationDenied => '通知权限被拒绝，请在系统设置中开启';
   @override
-  String get notificationSubtitle => 'Receive message alerts when app is in background';
+  String get notificationSubtitle => '应用在后台时接收消息提醒';
   @override
-  String get notifications => 'Notifications';
+  String get notifications => '通知';
   @override
-  String get offline => 'Offline';
+  String get offline => '离线';
   @override
-  String get offlineBanner => 'You are offline. Messages will be sent when connection is restored.';
+  String get offlineBanner => '您已离线。网络恢复后将自动发送消息。';
   @override
   String get offlineCount => '离线';
   @override
-  String get online => 'Online';
+  String get online => '在线';
   @override
   String get onlineCount => '在线';
   @override
@@ -829,13 +829,13 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get openFailed => '打开失败';
   @override
-  String get openInBrowser => 'Open in Browser';
+  String get openInBrowser => '在浏览器中打开';
   @override
   String get opening => '打开中...';
   @override
   String get outgoing => '已发送';
   @override
-  String get password => 'Password';
+  String get password => '密码';
   @override
   String get passwordDigit => '密码必须包含至少一个数字';
   @override
@@ -847,73 +847,73 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get passwordsNotMatch => '两次输入的密码不一致';
   @override
-  String get pending => 'Pending';
+  String get pending => '待处理';
   @override
   String get presenceTitle => '在线状态';
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => '隐私政策';
   @override
-  String get profile => 'Profile';
+  String get profile => '个人资料';
   @override
   String get profileSaved => '资料已保存';
   @override
   String get readImageFailed => '读取图片失败';
   @override
-  String get register => 'Register';
+  String get register => '注册';
   @override
   String get registrationFailed => '注册失败';
   @override
-  String get reject => 'Reject';
+  String get reject => '拒绝';
   @override
   String get rejectSuccess => '已拒绝';
   @override
-  String get removeFriendConfirm => 'Remove this friend?';
+  String get removeFriendConfirm => '确定移除该好友吗？';
   @override
   String get removeFriendLabel => '删除好友';
   @override
   String get removeReactionFailed => '移除反应失败';
   @override
-  String get reply => 'Reply';
+  String get reply => '回复';
   @override
   String get replyingTo => '回复';
   @override
   String get requestCancelled => '已取消请求';
   @override
-  String get retry => 'Retry';
+  String get retry => '重试';
   @override
   String get retrySend => '重试发送';
   @override
-  String get save => 'Save';
+  String get save => '保存';
   @override
   String get saveFailed => '保存失败';
   @override
-  String get search => 'Search';
+  String get search => '搜索';
   @override
   String get searchChannel => '搜索 #';
   @override
-  String get searchMessages => 'Search messages...';
+  String get searchMessages => '搜索消息...';
   @override
   String get searchTooltip => '搜索消息';
   @override
-  String get selectChannel => 'Select a channel';
+  String get selectChannel => '选择一个频道';
   @override
   String get selectConversation => '选择一个会话';
   @override
-  String get send => 'Send';
+  String get send => '发送';
   @override
   String get sendFailedRetry => '发送失败（点击重试）';
   @override
-  String get sendMessage => 'Send Message';
+  String get sendMessage => '发送消息';
   @override
-  String get sending => 'Sending...';
+  String get sending => '发送中...';
   @override
-  String get server => 'Server';
+  String get server => '服务器';
   @override
   String get serverUrl => '服务器地址';
   @override
-  String get servers => 'Servers';
+  String get servers => '服务器';
   @override
-  String get settings => 'Settings';
+  String get settings => '设置';
   @override
   String get settingsTooltip => '设置';
   @override
@@ -923,7 +923,7 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get startSearch => '输入关键词开始搜索';
   @override
-  String get statusText => 'Status Text';
+  String get statusText => '状态文本';
   @override
   String get statusTextHint => '输入个人状态';
   @override
@@ -931,11 +931,11 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get tapToJump => '点击跳转到该消息';
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => '服务条款';
   @override
   String get undeafen => '取消耳机静音';
   @override
-  String get unknownError => 'An unknown error occurred';
+  String get unknownError => '发生未知错误';
   @override
   String get unmute => '取消静音';
   @override
@@ -943,7 +943,7 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get userNotFound => '用户不存在';
   @override
-  String get username => 'Username';
+  String get username => '用户名';
   @override
   String get usernameFormat => '用户名只能包含字母、数字和下划线';
   @override
@@ -955,13 +955,13 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get validEmail => '请输入有效的邮箱地址';
   @override
-  String get version => 'Version';
+  String get version => '版本';
   @override
   String get viewProfile => '查看资料';
   @override
   String get videoLoadFailed => '无法加载视频';
   @override
-  String get voice => 'Voice';
+  String get voice => '语音';
   @override
   String get voicePermission => '麦克风权限';
   @override
