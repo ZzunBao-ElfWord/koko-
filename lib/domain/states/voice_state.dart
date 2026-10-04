@@ -10,6 +10,7 @@ class VoiceParticipant {
   final String? avatarUrl;
   final bool isSpeaking;
   final bool isMuted;
+  final bool isDeafened;
   final double audioLevel;
 
   VoiceParticipant({
@@ -18,6 +19,7 @@ class VoiceParticipant {
     this.avatarUrl,
     this.isSpeaking = false,
     this.isMuted = false,
+    this.isDeafened = false,
     this.audioLevel = 0.0,
   });
 
@@ -27,6 +29,7 @@ class VoiceParticipant {
     String? avatarUrl,
     bool? isSpeaking,
     bool? isMuted,
+    bool? isDeafened,
     double? audioLevel,
   }) {
     return VoiceParticipant(
@@ -35,6 +38,7 @@ class VoiceParticipant {
       avatarUrl: avatarUrl ?? this.avatarUrl,
       isSpeaking: isSpeaking ?? this.isSpeaking,
       isMuted: isMuted ?? this.isMuted,
+      isDeafened: isDeafened ?? this.isDeafened,
       audioLevel: audioLevel ?? this.audioLevel,
     );
   }
@@ -52,6 +56,8 @@ class VoiceRoomState {
   final Map<String, double> audioLevels;
   final NetworkQuality networkQuality;
   final String? error;
+
+  int get participantCount => participants.length;
 
   VoiceRoomState({
     this.isConnected = false,
