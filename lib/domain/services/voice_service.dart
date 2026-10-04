@@ -5,7 +5,7 @@ import 'package:livekit_client/livekit_client.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../core/constants.dart';
 import '../../network/api_client.dart';
-import 'voice_state.dart';
+import '../states/voice_state.dart';
 
 /// Service for managing LiveKit voice room connections.
 /// Handles connect, disconnect, mute/unmute, deafen/undeafen,

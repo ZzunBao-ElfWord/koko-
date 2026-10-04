@@ -13,6 +13,7 @@ import '../../l10n/app_localizations.dart';
 import '../../data/models/message.dart';
 import '../../data/models/user.dart';
 import '../../data/models/attachment.dart';
+import '../../data/models/reaction.dart';
 import '../../domain/states/app_state.dart';
 import 'emoji_picker.dart';
 import 'fullscreen_image_viewer.dart';
@@ -268,7 +269,7 @@ class _MessageBubbleState extends ConsumerState<MessageBubble> {
                       ),
                     ),
                   if (isPending)
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 2),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -584,7 +585,7 @@ class _MessageBubbleState extends ConsumerState<MessageBubble> {
                   color: Colors.black.withOpacity(0.5),
                   shape: BoxShape.circle,
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(12),
                   child: Icon(Icons.play_arrow, size: 32, color: Colors.white),
                 ),

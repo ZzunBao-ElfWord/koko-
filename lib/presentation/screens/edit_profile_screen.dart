@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../core/theme.dart';
 import '../../data/models/user.dart';
+import '../../domain/states/app_state.dart';
 import '../providers/app_provider.dart';
 import '../../l10n/app_localizations.dart';
 
@@ -26,12 +27,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   Uint8List? _pendingAvatarBytes;
   String? _pendingAvatarName;
 
-  final List<Map<String, dynamic>> _presenceOptions = [
-    {'value': 'online', 'label': AppLocalizations.of(context)!.online, 'icon': Icons.circle, 'color': AppTheme.successColor},
-    {'value': 'idle', 'label': AppLocalizations.of(context)!.idle, 'icon': Icons.access_time, 'color': Colors.orange},
-    {'value': 'busy', 'label': AppLocalizations.of(context)!.busy, 'icon': Icons.do_not_disturb_on, 'color': AppTheme.errorColor},
-    {'value': 'invisible', 'label': AppLocalizations.of(context)!.invisible, 'icon': Icons.visibility_off, 'color': Colors.grey},
-  ];
+  // _presenceOptions moved to build() where context is available
 
   @override
   void initState() {
@@ -151,6 +147,12 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(currentUserProvider);
+    final _presenceOptions = [
+      {'value': 'online', 'label': AppLocalizations.of(context)!.online, 'icon': Icons.circle, 'color': AppTheme.successColor},
+      {'value': 'idle', 'label': AppLocalizations.of(context)!.idle, 'icon': Icons.access_time, 'color': Colors.orange},
+      {'value': 'busy', 'label': AppLocalizations.of(context)!.busy, 'icon': Icons.do_not_disturb_on, 'color': AppTheme.errorColor},
+      {'value': 'invisible', 'label': AppLocalizations.of(context)!.invisible, 'icon': Icons.visibility_off, 'color': Colors.grey},
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -213,7 +215,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   TextField(
                     controller: _usernameController,
                     readOnly: true,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: AppLocalizations.of(context)!.username,
                       helperText: AppLocalizations.of(context)!.usernameReadonly,
                       border: OutlineInputBorder(),
@@ -223,7 +225,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   // Display name
                   TextField(
                     controller: _displayNameController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: AppLocalizations.of(context)!.displayNameLabel,
                       hintText: AppLocalizations.of(context)!.displayNameHint,
                       border: OutlineInputBorder(),
@@ -233,7 +235,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   // Status text
                   TextField(
                     controller: _statusTextController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: AppLocalizations.of(context)!.statusTextLabel,
                       hintText: AppLocalizations.of(context)!.statusTextHint,
                       border: OutlineInputBorder(),

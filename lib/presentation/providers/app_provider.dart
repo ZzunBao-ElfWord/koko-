@@ -53,7 +53,7 @@ final voiceServiceProvider = Provider<VoiceService>((ref) {
 
 // Push Notifications
 final pushNotificationServiceProvider = Provider<PushNotificationService>((ref) {
-  return PushNotificationService(ref.read(apiClientProvider));
+  return PushNotificationService();
 });
 
 // Offline Queue

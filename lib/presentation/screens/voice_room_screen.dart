@@ -129,7 +129,7 @@ class _VoiceRoomScreenState extends ConsumerState<VoiceRoomScreen> {
 
           // Loading indicator
           if (_isJoining || voiceState.isConnecting)
-            const Expanded(
+            Expanded(
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -232,7 +232,7 @@ class _VoiceRoomScreenState extends ConsumerState<VoiceRoomScreen> {
                           width: 80,
                           height: 80,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) => const Center(
+                          placeholder: (context, url) => Center(
                             child: CircularProgressIndicator(strokeWidth: 2),
                           ),
                           errorWidget: (context, url, error) => _buildDefaultAvatar(participant, isLocal),

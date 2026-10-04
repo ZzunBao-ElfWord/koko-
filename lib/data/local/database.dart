@@ -254,10 +254,10 @@ class LocalDatabase {
     }
 
     return Message(
-      id: m['id'],
-      channel: m['channel_id'],
-      author: m['author_id'],
-      content: m['content'],
+      id: m["id"] as String?,
+      channel: m['channel_id'] as String?,
+      author: m['author_id'] as String?,
+      content: m['content'] as String?,
       edited: m['edited_at'] != null ? DateTime.fromMillisecondsSinceEpoch(m['edited_at']).toIso8601String() : null,
       replies: m['reply_ids']?.toString().split(',').where((s) => s.isNotEmpty).toList(),
       attachments: attachments,
@@ -369,11 +369,11 @@ class LocalDatabase {
         ? await db.query('channels', where: 'server_id = ?', whereArgs: [serverId])
         : await db.query('channels');
     return maps.map((m) => Channel(
-          id: m['id'],
-          server: m['server_id'],
-          name: m['name'],
-          channelType: m['channel_type'],
-          lastMessageId: m['last_message_id'],
+          id: m["id"] as String?,
+          server: m['server_id'] as String?,
+          name: m["name"] as String?,
+          channelType: m['channel_type'] as String?,
+          lastMessageId: m['last_message_id'] as String?,
           unreadCount: m['unread_count'] ?? 0,
           mentionCount: m['mention_count'] ?? 0,
         )).toList();
@@ -419,12 +419,12 @@ class LocalDatabase {
     final db = await database;
     final maps = await db.query('servers');
     return maps.map((m) => Server(
-          id: m['id'],
-          owner: m['owner_id'],
-          name: m['name'],
-          icon: m['icon_id'],
-          banner: m['banner_id'],
-          description: m['description'],
+          id: m["id"] as String?,
+          owner: m["owner_id"] as String?,
+          name: m["name"] as String?,
+          icon: m["icon_id"] as String?,
+          banner: m["banner_id"] as String?,
+          description: m["description"] as String?,
         )).toList();
   }
 
@@ -481,14 +481,14 @@ class LocalDatabase {
   static User _mapToUser(Map<String, dynamic> m) {
     final statusText = m['status']?.toString();
     return User(
-      id: m['id'],
-      username: m['username'],
-      displayName: m['display_name'],
-      avatar: m['avatar_id'],
+      id: m["id"] as String?,
+      username: m['username'] as String?,
+      displayName: m['display_name'] as String?,
+      avatar: m['avatar_id'] as String?,
       status: statusText != null && statusText.isNotEmpty
           ? UserStatus(text: statusText, presence: m['presence'] ?? 'unknown')
           : null,
-      relationship: m['relationship'],
+      relationship: m['relationship'] as String?,
     );
   }
 
