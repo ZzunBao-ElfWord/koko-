@@ -28,7 +28,6 @@ dependencies:
   uuid: ^4.3.3
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
-  livekit_client: ^2.2.0
   permission_handler: ^11.3.0
   # firebase_messaging: ^14.9.0      # DISABLED for debug build (no FCM in test env)
   # firebase_core: ^2.31.0           # DISABLED for debug build (no FCM in test env)
