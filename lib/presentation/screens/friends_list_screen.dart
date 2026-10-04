@@ -203,7 +203,7 @@ class _FriendsListScreenState extends ConsumerState<FriendsListScreen> {
                     ...offlineFriends.map((f) => _buildFriendTile(f)),
                   ],
                   if (_friends.isEmpty)
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(32),
                       child: Center(
                         child: Column(

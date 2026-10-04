@@ -254,9 +254,9 @@ class LocalDatabase {
     }
 
     return Message(
-      id: m["id"] as String?,
-      channel: m['channel_id'] as String?,
-      author: m['author_id'] as String?,
+      id: m["id"] as String,
+      channel: m['channel_id'] as String,
+      author: m['author_id'] as String,
       content: m['content'] as String?,
       edited: m['edited_at'] != null ? DateTime.fromMillisecondsSinceEpoch(m['edited_at']).toIso8601String() : null,
       replies: m['reply_ids']?.toString().split(',').where((s) => s.isNotEmpty).toList(),
@@ -369,13 +369,13 @@ class LocalDatabase {
         ? await db.query('channels', where: 'server_id = ?', whereArgs: [serverId])
         : await db.query('channels');
     return maps.map((m) => Channel(
-          id: m["id"] as String?,
+          id: m["id"] as String,
           server: m['server_id'] as String?,
           name: m["name"] as String?,
-          channelType: m['channel_type'] as String?,
+          channelType: m['channel_type'] as String,
           lastMessageId: m['last_message_id'] as String?,
-          unreadCount: m['unread_count'] ?? 0,
-          mentionCount: m['mention_count'] ?? 0,
+          unreadCount: (m["unread_count"] as int?) ?? 0,
+          mentionCount: (m["mention_count"] as int?) ?? 0,
         )).toList();
   }
 
@@ -419,7 +419,7 @@ class LocalDatabase {
     final db = await database;
     final maps = await db.query('servers');
     return maps.map((m) => Server(
-          id: m["id"] as String?,
+          id: m["id"] as String,
           owner: m["owner_id"] as String?,
           name: m["name"] as String?,
           icon: m["icon_id"] as String?,
@@ -481,8 +481,8 @@ class LocalDatabase {
   static User _mapToUser(Map<String, dynamic> m) {
     final statusText = m['status']?.toString();
     return User(
-      id: m["id"] as String?,
-      username: m['username'] as String?,
+      id: m["id"] as String,
+      username: m['username'] as String,
       displayName: m['display_name'] as String?,
       avatar: m['avatar_id'] as String?,
       status: statusText != null && statusText.isNotEmpty

@@ -119,7 +119,7 @@ class _ServerListScreenState extends ConsumerState<ServerListScreen> {
             color: isSelected ? AppTheme.primaryColor : Colors.grey[800],
             borderRadius: BorderRadius.circular(16),
           ),
-          child: ServerIcon(server: server, size: 48),
+          child: ServerIcon(server: server, isSelected: isSelected, onTap: () => _selectServer(server)),
         ),
       ),
     );

@@ -185,8 +185,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                         CircleAvatar(
                           radius: 48,
                           backgroundColor: _getAvatarColor(user?.id ?? ''),
-                          backgroundImage: _pendingAvatarBytes != null
-                              ? MemoryImage(_pendingAvatarBytes!)
+                          backgroundImage: (_pendingAvatarBytes != null && _pendingAvatarBytes!.isNotEmpty)
+                              ? MemoryImage(_pendingAvatarBytes!) as ImageProvider
                               : (user?.avatarUrl != null ? NetworkImage(user!.avatarUrl!) : null),
                           onBackgroundImageError: (_, __) {},
                           child: Text(

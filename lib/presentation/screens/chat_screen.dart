@@ -649,7 +649,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                         currentUserId: currentUserId,
                         onDelete: () => _deleteMessage(message),
                         onEdit: (id) => _startEdit(message),
-                        onReply: _setReplyTarget,
+                        onReply: (id) => _setReplyTarget(message),
                         onAddReaction: _addReaction,
                         onRemoveReaction: _removeReaction,
                         onJumpToReply: _jumpToMessage,

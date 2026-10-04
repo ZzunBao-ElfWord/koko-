@@ -133,7 +133,7 @@ class _FriendRequestsScreenState extends ConsumerState<FriendRequestsScreen> {
 
   Widget _buildIncomingList() {
     if (_incoming.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -183,7 +183,7 @@ class _FriendRequestsScreenState extends ConsumerState<FriendRequestsScreen> {
 
   Widget _buildOutgoingList() {
     if (_outgoing.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
