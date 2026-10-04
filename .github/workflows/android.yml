@@ -1,0 +1,117 @@
+# ============================================================================
+# Stoat Mobile — GitHub Actions 自动构建 Android APK（测试环境）
+# ============================================================================
+# 用途：每次 push 到 main 分支或手动触发时，自动构建 debug APK
+# 目标后端：openelfai.cn（通过 --dart-define 注入）
+# ============================================================================
+
+name: Build Android APK (Test)
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'lib/**'
+      - 'android/**'
+      - 'assets/**'
+      - 'pubspec.yaml'
+      - '.github/workflows/android.yml'
+  workflow_dispatch:
+    inputs:
+      backend_url:
+        description: '后端域名（默认 https://openelfai.cn）'
+        required: false
+        default: 'https://openelfai.cn'
+        type: string
+
+env:
+  API_BASE_URL: ${{ github.event.inputs.backend_url || 'https://openelfai.cn' }}
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.24.0'
+
+      - name: Verify Flutter installation
+        run: |
+          flutter --version
+          flutter doctor -v
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Prepare google-services.json (test build placeholder)
+        run: |
+          if [ -f "android/app/google-services.json.PLACEHOLDER" ]; then
+            echo "Using placeholder google-services.json for test build..."
+            cp android/app/google-services.json.PLACEHOLDER android/app/google-services.json
+          elif [ ! -f "android/app/google-services.json" ]; then
+            echo "Creating minimal google-services.json placeholder..."
+            cat > android/app/google-services.json << 'GSEOF'
+          {
+            "project_info": {
+              "project_number": "000000000000",
+              "project_id": "stoat-test-placeholder",
+              "storage_bucket": "stoat-test-placeholder.appspot.com"
+            },
+            "client": [
+              {
+                "client_info": {
+                  "mobilesdk_app_id": "1:000000000000:android:0000000000000000000000",
+                  "android_client_info": {
+                    "package_name": "com.openelf.stoat"
+                  }
+                },
+                "oauth_client": [],
+                "api_key": [{"current_key": "test-placeholder-key"}],
+                "services": {
+                  "appinvite_service": {
+                    "other_platform_oauth_client": []
+                  }
+                }
+              }
+            ],
+            "configuration_version": "1"
+          }
+          GSEOF
+          fi
+
+      - name: Build debug APK
+        run: |
+          flutter build apk --debug \
+            --dart-define=API_BASE_URL=${{ env.API_BASE_URL }}
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stoat-android-debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Print build summary
+        run: |
+          echo "========================================"
+          echo "Build Summary"
+          echo "========================================"
+          echo "Backend URL : ${{ env.API_BASE_URL }}"
+          echo "APK Path    : build/app/outputs/flutter-apk/app-debug.apk"
+          echo "Flutter Ver : $(flutter --version | head -1)"
+          echo "Commit      : ${{ github.sha }}"
+          echo "Branch      : ${{ github.ref_name }}"
+          echo "========================================"

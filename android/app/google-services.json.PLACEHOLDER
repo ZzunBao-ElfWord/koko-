@@ -1,0 +1,37 @@
+{
+  "_comment": "THIS IS A PLACEHOLDER. Replace with your actual google-services.json from Firebase Console.",
+  "_instructions": [
+    "1. Go to https://console.firebase.google.com/",
+    "2. Create a new project or select existing one",
+    "3. Add an Android app with package name: com.openelf.stoat",
+    "4. Download google-services.json",
+    "5. Replace this file with the downloaded google-services.json (remove .PLACEHOLDER extension)"
+  ],
+  "project_info": {
+    "project_number": "PLACEHOLDER",
+    "project_id": "stoat-mobile-placeholder",
+    "storage_bucket": "stoat-mobile-placeholder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:PLACEHOLDER:android:PLACEHOLDER",
+        "android_client_info": {
+          "package_name": "com.openelf.stoat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "PLACEHOLDER_API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
